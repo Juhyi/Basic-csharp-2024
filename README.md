@@ -252,8 +252,27 @@
     - [obsolete("다음버전 사용 불가!)]
 
 - 파이썬 실행
-- Winform UI 개발 + 파일, 스레드
+    - COM 객체 사용(dynamic 형식)
+    - IronPython 라이브러리 : Python을 C#에서 사용할 수 있도록 해주는 오픈소스 라이브러리
+    - Nuget Package : 파이썬 pip와 같은 라이브러리 관리툴
+    - 해당 프로그램 종속성, 마우스 오른쪽 버튼 > NugetPackage 관리
+        1. Python 엔진,scope,설정경로 생성
+        2. 해당 컴퓨터 파이썬 경로들을 설정
+        3. 실행시킬 파이썬 파일의 경로를 지정
+        4. 파이썬 실행(scope 연결)
+        5. 파이썬 함수를 Func 또는 Action으로 매핑
+        6. 매핑시킨 메서드를 실행
+
 - 가비지 컬렉션
+    - C, C++은 메모리 사용시 개발자가 직접 메모리 해제 해야함.
+    - C#, Java, python 등의 객체지향 언어는 Garbage Collection(쓰레기 수집기) 기능으로 프로그램이 직접 관리
+    - C# 개발자는 메모리 관리에 아무것도 할게 없다!!
+
+- Winform UI 개발 + 파일, 스레드
+    -  그래픽 사용자 인터페이스를 만드는 방법
+        1. Winforms(Window Forms)
+        2. WPF (Windows Presentation Foundation)
+    - WYSIWYG(What You See Is What You Get) 방식의 GUI 프로그램 개발
 
 ## 4일차
 - WPF

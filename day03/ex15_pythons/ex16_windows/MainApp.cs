@@ -23,7 +23,7 @@ namespace ex16_windows
         }
 
  
-        
+        // 폼 클릭 이벤트핸들러.
         private static void Form_Click(object? sender, EventArgs e)
         {
             Console.WriteLine("프로그램 종료 중...");
