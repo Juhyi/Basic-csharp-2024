@@ -1,158 +1,76 @@
-﻿namespace ex13_linqs
+﻿namespace cs03_basic_app
 {
-    class Profile
-    {
-        private int age;
-        public string Name { get; set; } // 자동 프로퍼티
-        public int Height { get; set; } // 키에 -21억부터 +21억까지
-        public int Age
-        {
-            get => age;
-            set
-            {
-                if (value >= 0 && value < 200) { age = value; }
-                else { age = 20; } // 잘못 넣었으면 20으로 fix
-            }
-        }
-    }
-
-    class Product
-    {
-        public string Title { get; set; }
-        public string Star { get; set; }
-    }
-
+    // 대리자가 정수값 두개 받아서 정수값을 리턴해주는 함수들은 내가 대신 실행시켜줄게
+    delegate int Calculate(int a, int b);
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("LINQ 미사용");
+            Console.WriteLine("Hello, World!");
 
-            Profile[] arrProfiles =
+            Calculate calc = delegate (int a, int b)    //13장에서 본, 대리자로 만든 무명메서드
             {
-                new Profile {Name = "정우성", Height = 186, Age = 49 },
-                new Profile {Name = "이정재", Height = 184, Age = 49 },
-                new Profile {Name = "김태희", Height = 158, Age = 46 },
-                new Profile {Name = "전지현", Height = 172, Age = 44 },
-                new Profile {Name = "이문세", Height = 180, Age = 55 },
-                new Profile {Name = "장원영", Height = 165, Age = 24 },
-                new Profile {Name = "RM", Height = 175, Age = 29 }
+                return a + b;
             };
 
-            Product[] arrProducts =
+            Console.WriteLine($"계산결과 = {calc(10, 4)}");
+
+            // 람다식을 쓰면 훨씬 짭게 코딩가능
+            // calc와 동일한 기능, return문을 생략해야함
+            Calculate calc2 = (a, b) => a + b;  //{ return a + b};
+
+            Console.WriteLine($"계산결과 = {calc(11, 5)}");
+
+            //문장형식의 람다식, {} 안에서는 return 생략할 수 없음
+            Calculate calc3 = (a, b) =>
             {
-                new Product { Title = "비트", Star = "정우성" },
-                new Product { Title = "오징어게임", Star = "이정재" },
-                new Product { Title = "도둑들", Star = "전지현" },
-                new Product { Title = "엽기적인 그녀", Star = "전지현" },
-                new Product { Title = "Dynamite", Star = "RM" },
-                new Product { Title = "Solo 예찬", Star = "이문세" },
+                Console.WriteLine("이런식으로 뺄셈이 됩니다.");
+                var sum = a - b;
+                return sum;
+            };
+            Console.WriteLine($"계산결과 = {calc3(11, 4)}");
+
+            // Func, Action 빌트인 대리자 사용
+            // Func리턴값이 있기 때문에 <int>는 리턴값이 int란 뜻
+            // <int, int>는 매개변수 하나 리턴 하나
+            Func<int> func1 = () => 10;
+            Console.WriteLine($"Func1 = {func1()}");
+            Func<int, int> func2 = (x) => x * 2;
+            Console.WriteLine($"Func2 = {func2(5)}");
+
+            //Action은 리턴값이 없음
+            int result = 0;
+            Action<int> act1 = (x) => result = x * x;
+            act1(3);
+            Console.WriteLine($"Act1 = {result}");
+            Action<double, double> act2 = (x, y) =>
+            {
+                double res = x / y;
+                Console.WriteLine(res);
             };
 
-            // LINQ 미사용
-            List<Profile> profiles = new List<Profile>();
-            foreach (var profile in arrProfiles)
-            {
-                if (profile.Height < 175)
-                    profiles.Add(profile);
-            }
-
-            profiles.Sort(
-                (profile1, profile2) =>
-                {
-                    return profile1.Height - profile2.Height;
-                });
-
-            foreach (var profile in profiles)
-            {
-                Console.WriteLine($"{profile.Name}({profile.Age}세), {profile.Height}cm");
-            } // LINQ를 사용하지 않으면 실행코드 15줄
-            Console.WriteLine();
-
-            // LINQ를 사용하면
-            Console.WriteLine("LINQ 사용");
-
-            var profiles2 = from profile in arrProfiles
-                            where profile.Height < 175
-                            orderby profile.Height
-                            select profile;
-
-            foreach (var profile in profiles2)
-            {
-                Console.WriteLine($"{profile.Name}({profile.Age}세), {profile.Height}cm");
-            } // LINQ를 사용하면 실행코드 8줄
-            Console.WriteLine();
-
-            // LINQ 기본
-            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-            var result = from n in numbers
-                         where n % 2 == 0
-                         orderby n descending // 내림차순 정렬
-                         select n;
-
-            foreach (var item in result)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine();
-
-            // group by : DB의 group by 처럼 집계함수가 필요하진 않음
-            var groupProfiles = from p in arrProfiles
-                                orderby p.Height descending
-                                group p by p.Height < 175 into g
-                                select new { GroupKey = g.Key, Profiles = g };
-
-            foreach (var group in groupProfiles)
-            {
-                Console.WriteLine($"- 175cm 미만? : {group.GroupKey}");
-
-
-                foreach (var profile in group.Profiles)
-                {
-                    Console.WriteLine($">>> {profile.Name}({profile.Age}세) {profile.Height}cm");
-                }
-                Console.WriteLine();
-            }
-
-            // LINQ JOIN
-            var innerJoinResult = from pf in arrProfiles
-                                  join pr in arrProducts
-                                  on pf.Name equals pr.Star
-                                  select new
-                                  {
-                                      Name = pf.Name,
-                                      Work = pr.Title,
-                                      Height = pf.Height,
-                                      Age = pf.Age
-                                  };
-
-            Console.WriteLine("내부조인 결과!");
-            foreach (var item in innerJoinResult)
-            {
-                Console.WriteLine($"작품: {item.Work} / 이름: {item.Name} / 나이: {item.Age}");
-            }
-            Console.WriteLine();
-
-            var outerJoinResult = from pf in arrProfiles
-                                  join pr in arrProducts
-                                  on pf.Name equals pr.Star
-                                  into ps   // 외부조인시 내부조인 LINQ에 추가되는 부분
-                                  from pr in ps.DefaultIfEmpty(new Product() { Title = "작품없음" }) // 외부조인시 내부조인 LINQ에 추가되는 부분
-                                  select new
-                                  {
-                                      Name = pf.Name,
-                                      Work = pr.Title,
-                                      Height = pf.Height,
-                                      Age = pf.Age
-                                  };
-
-            Console.WriteLine("외부조인 결과!");
-            foreach (var item in outerJoinResult)
-            {
-                Console.WriteLine($"작품: {item.Work} / 이름: {item.Name} / 나이: {item.Age}");
-            }
+            act2(21.1, 7.0);
         }
     }
+
+    class Test
+    {
+        private int name;
+        private double point;
+
+        public int Name // 기존의 프로퍼티 방식
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public double Point     // 람다식 사용한 프로퍼터, 코딩이 간단해짐
+        {
+            get => point;
+            set => point = value;
+        }
+
+    }
 }
+

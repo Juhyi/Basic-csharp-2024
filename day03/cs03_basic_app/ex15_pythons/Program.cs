@@ -39,8 +39,12 @@ namespace ex15_pythons
             source.Execute(scope);
 
             var pythonFunc = scope.GetVariable<Func<int, int, int>>("sum");
+            var result = pythonFunc(10, 7);
+            Console.WriteLine($"Python 함수실행 = {result}");
 
-            Console.WriteLine($"Python 함수실행 = {pythonFunc(10, 7)}");
+            var PythonGreeting = scope.GetVariable<Func<string>>("sayGreeting");
+            var greeting = PythonGreeting();
+            Console.WriteLine($"결과 = {greeting}");
 
         }
     }
