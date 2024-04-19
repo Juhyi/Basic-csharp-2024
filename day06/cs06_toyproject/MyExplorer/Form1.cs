@@ -165,7 +165,7 @@ namespace MyExplorer
         {
             try
             {
-                var extension = LsvFile.SelectedItems[0].Text.Split(" . ")[1];
+                var extension = LsvFile.SelectedItems[0].Text.Split(".")[1];
                 if (extension == "exe")
                 {   // 실행파일이면
                     // MessageBox.Show(LsvFile.SelectedItems[0].Text); //디버깅 용

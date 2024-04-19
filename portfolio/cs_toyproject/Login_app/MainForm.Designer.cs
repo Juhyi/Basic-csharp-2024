@@ -1,6 +1,6 @@
 ﻿namespace Login_app
 {
-    partial class LoginMain
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             label1 = new Label();
             label2 = new Label();
             TxtID = new TextBox();
@@ -37,7 +37,7 @@
             groupBox1 = new GroupBox();
             BtnMakeId = new Button();
             groupBox1.SuspendLayout();
-            SuspendLayout();
+//            SuspendLayout();
             // 
             // label1
             // 

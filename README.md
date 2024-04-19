@@ -332,6 +332,12 @@
 
 
     - 도서관리 앱 with SQL Server (Base) ModernUI(NuGet패키지)
+    ```cs
+    // 값 형식 변수에 null값을 넣을 수 있도록 만들어준 기능 Nullable, 변수명 뒤에 ?만 추가할 것!
+    int? a = null;
+    double? b = null;
+    float? c = null;
+    ```
 
 ## 8일차
 - 토이 프로젝트
