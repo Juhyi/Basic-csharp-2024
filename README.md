@@ -327,6 +327,7 @@
 
 
 
+    https://github.com/Juhyi/Basic-csharp-2024/assets/158007405/c6827ac0-6f88-4226-a217-724d5f2e2d31
 
 
 
