@@ -35,6 +35,7 @@
             TxtPassword = new TextBox();
             Btnlog = new Button();
             groupBox1 = new GroupBox();
+            BtnMakeId = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,17 +61,17 @@
             // 
             // TxtID
             // 
-            TxtID.Location = new Point(15, 52);
+            TxtID.Location = new Point(45, 52);
             TxtID.Name = "TxtID";
-            TxtID.Size = new Size(479, 23);
+            TxtID.Size = new Size(449, 23);
             TxtID.TabIndex = 2;
             TxtID.Text = "아이디 또는 이메일";
             // 
             // TxtPassword
             // 
-            TxtPassword.Location = new Point(15, 114);
+            TxtPassword.Location = new Point(45, 114);
             TxtPassword.Name = "TxtPassword";
-            TxtPassword.Size = new Size(479, 23);
+            TxtPassword.Size = new Size(449, 23);
             TxtPassword.TabIndex = 3;
             TxtPassword.Text = "비밀번호";
             // 
@@ -81,15 +82,16 @@
             Btnlog.ForeColor = SystemColors.ButtonHighlight;
             Btnlog.Location = new Point(15, 156);
             Btnlog.Name = "Btnlog";
-            Btnlog.Size = new Size(191, 38);
+            Btnlog.Size = new Size(241, 38);
             Btnlog.TabIndex = 4;
             Btnlog.Text = "Log in";
             Btnlog.UseVisualStyleBackColor = false;
-            Btnlog.Click += Btnlog_Click;
+//            Btnlog.Click += Btnlog_Click;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ButtonHighlight;
+            groupBox1.Controls.Add(BtnMakeId);
             groupBox1.Controls.Add(Btnlog);
             groupBox1.Controls.Add(TxtPassword);
             groupBox1.Controls.Add(TxtID);
@@ -100,6 +102,19 @@
             groupBox1.Size = new Size(520, 213);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
+            // 
+            // BtnMakeId
+            // 
+            BtnMakeId.BackColor = SystemColors.ActiveCaption;
+            BtnMakeId.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            BtnMakeId.ForeColor = SystemColors.ButtonHighlight;
+            BtnMakeId.Location = new Point(262, 156);
+            BtnMakeId.Name = "BtnMakeId";
+            BtnMakeId.Size = new Size(232, 38);
+            BtnMakeId.TabIndex = 4;
+            BtnMakeId.Text = "or Get Registered";
+            BtnMakeId.UseVisualStyleBackColor = false;
+            //BtnMakeId.Click += Btnlog_Click;
             // 
             // LoginMain
             // 
@@ -123,5 +138,6 @@
         private TextBox TxtPassword;
         private Button Btnlog;
         private GroupBox groupBox1;
+        private Button BtnMakeId;
     }
 }
