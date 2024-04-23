@@ -114,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -132,6 +133,16 @@
   <ItemGroup>
     <Content Include="books.ico" />
     <Content Include="books1.ico" />
+    <Content Include="imgs\imgs\book.ico" />
+    <Content Include="imgs\imgs\book.png" />
+    <Content Include="imgs\imgs\division.ico" />
+    <Content Include="imgs\imgs\division.png" />
+    <Content Include="imgs\imgs\login.ico" />
+    <Content Include="imgs\imgs\login.png" />
+    <Content Include="imgs\imgs\member.ico" />
+    <Content Include="imgs\imgs\member.png" />
+    <Content Include="imgs\imgs\rental.ico" />
+    <Content Include="imgs\imgs\rental.png" />
     <Content Include="imgs\KakaoTalk_20240422_110811855.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
