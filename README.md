@@ -338,13 +338,26 @@
     double? b = null;
     float? c = null;
     ```
-
+        - 로그인 패스워드 암호화 미구현
+        
 ## 8일차
 - 토이 프로젝트
-    - 도서관리 앱 종료
-    - IoT Dummy 앱 with SQL Server(IOT, DB)
+    - 도서관리 앱 관리화면
+        - 앱 사용자 관리 완료
 
-    - 국가 교통정보센터 CCTV뷰 앱(OpenAPI, NuGet dll, Network)
+## 9일차
+- 토이 프로잭트
+    - 도서관리 앱
+        - 책 장르 관리
+        - 책정보 관리
+        - 도서 회원 관리
+        - 대출관리
+        - 이 프로그램은 ...
+
+## 나머지
+- Pending
+    - IoT Dummy 앱 with SQL Server(IOT, DB)
+    - 국가 교통정보센터 CCTV뷰 앱(OpenAPI, NuGet dll, Network, UI디자인, 비동기메서드)
     
 ## 개인 토이프로젝트
 - 심플 메모장앱
