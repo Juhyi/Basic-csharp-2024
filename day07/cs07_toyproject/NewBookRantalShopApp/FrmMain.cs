@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using MetroFramework;
 using MetroFramework.Forms;
 
 namespace NewBookRantalShopApp
@@ -7,9 +8,11 @@ namespace NewBookRantalShopApp
     public partial class FrmMain : MetroForm
     {
         // 각 화면을 초기화
-        FrmLoginUser frmLoginUser = null;
+        FrmLoginUser frmLoginUser = null;   // 객체를 메서드로 생성
         FrmBookDivision frmBookDivision = null;
         FrmBookInfo frmBookInfo = null;
+        FrmMember frmMember = null; // FrmMember: 클래스, frmMember : 객체 변수
+        FrmBookRental frmBookRental = null;
 
         public FrmMain()
         {
@@ -41,10 +44,20 @@ namespace NewBookRantalShopApp
 
         private void MnuBookInfo_Click(object sender, EventArgs e)
         {
+            // 객제변수, 객체 변수, 클래스, 클래스
             frmBookInfo = ShowActiveForm(frmBookInfo, typeof(FrmBookInfo)) as FrmBookInfo;
         }
 
+        private void MnuMember_Click(object sender, EventArgs e)
+        {
+            frmMember = ShowActiveForm(frmMember, typeof(FrmMember)) as FrmMember;
+        }
 
+
+        private void MnuBookRental_Click(object sender, EventArgs e)
+        {
+            frmBookRental = ShowActiveForm(frmBookRental, typeof(FrmBookRental)) as FrmBookRental;
+        }
 
 
 
@@ -75,5 +88,24 @@ namespace NewBookRantalShopApp
             return form;
         }
 
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var res =MetroMessageBox.Show(this, "종료하시겠습니까?", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(res == DialogResult.No)
+            {
+                e.Cancel = true; // 종료 안됨
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+        }
+
+        private void MnuAbout_Click(object sender, EventArgs e)
+        {
+            Frmabout popup = new Frmabout();
+            popup.StartPosition = FormStartPosition.CenterParent;
+            popup.ShowDialog();
+        }
     }
 }

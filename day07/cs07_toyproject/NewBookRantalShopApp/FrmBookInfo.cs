@@ -301,6 +301,15 @@ namespace NewBookRantalShopApp
             }
         }
 
+        // ISBN 숫자만 입력되도록 처리
+        private void TxtIsbn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // 숫자이외에는 전부 막아버림
+            if(!char.IsDigit(e.KeyChar)&& (e.KeyChar != '.') && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
     
