@@ -53,6 +53,7 @@ namespace NewBookRantalShopApp
             isNew = true;
             TxtRentalIdx.Text = TxtMemNames.Text = string.Empty;
             TxtMembersIdx.Text = TxtBookIdx.Text =  string.Empty;
+            TxtBookNames.Text = string.Empty;
             TxtRentalIdx.Focus(); // 순번은 자동증가 -> 입력불가
             DtpRetrunDate.Value = DtpRentalDate.Value = DateTime.Now;
            
@@ -114,7 +115,7 @@ namespace NewBookRantalShopApp
                     SqlParameter prmRentalDate = new SqlParameter("@rentalDate", DtpRentalDate.Value);
                     cmd.Parameters.Add(prmRentalDate);
                     var returnDate = "";    // 반납날짜때문에 추가처리
-                    if (DtpRentalDate.Value <= DtpRentalDate.Value) // 대출일보다 반납일이 뒤의 날짜가 되어야 함.
+                    if (DtpRentalDate.Value >= DtpRetrunDate.Value) // 대출일보다 반납일이 뒤의 날짜가 되어야 함.
                     {
                         returnDate = "";
                     }
@@ -151,6 +152,8 @@ namespace NewBookRantalShopApp
             }
 
             TxtRentalIdx.Text = TxtMemNames.Text = string.Empty;
+            TxtBookNames.Text = string.Empty;
+            TxtMembersIdx.Text = TxtBookIdx.Text = string.Empty;
             DtpRetrunDate.Value = DateTime.Now;
             RefreshData();
 
