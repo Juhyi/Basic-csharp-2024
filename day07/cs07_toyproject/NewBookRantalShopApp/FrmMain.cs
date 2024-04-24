@@ -26,6 +26,8 @@ namespace NewBookRantalShopApp
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.TopMost = true; // 가장 윈도우화면 상단에 
             frm.ShowDialog();
+
+            LblLoginid.Text = Helper.Common.LoginId;    // 메인창에 로그인된 아이디 표시
         }
 
         private void MnuLoginUsers_Click(object sender, EventArgs e)

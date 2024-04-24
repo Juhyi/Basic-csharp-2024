@@ -102,7 +102,7 @@ namespace NewBookRantalShopApp
                 {
                     chkUserId = reader["userId"] != null ? reader["userId"].ToString() : "-";   // 유저아이디가 null일때 = 변경
                     chkPassword = reader["password"] != null ? reader["password"].ToString() : "-";
-
+                    Helper.Common.LoginId = chkUserId;  // 로그인된 아이디.
                     return true;
                 }
                 else
